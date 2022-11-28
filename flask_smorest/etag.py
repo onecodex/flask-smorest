@@ -147,7 +147,9 @@ class EtagMixin:
 
     def _is_etag_enabled(self, app=None):
         """Return True if ETag feature enabled api-wise"""
-        return not get_config_value(app or current_app, self, "ETAG_DISABLED", False)
+        return not get_config_value(
+            app=app or current_app, ctx=self, key="ETAG_DISABLED", default=False
+        )
 
     def _verify_check_etag(self):
         """Verify check_etag was called in resource code

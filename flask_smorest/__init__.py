@@ -19,7 +19,7 @@ class Api(APISpecMixin, ErrorHandlerMixin):
     :param Flask app: Flask application
     :param spec_kwargs: kwargs to pass to internal APISpec instance
     :param str config_prefix: Should be used if the user is planning to use
-        multiple `Api`'s in the single app. If it is not empty then
+        multiple `Api`'s in a single app. If it is not empty then
         all application parameters will be prefixed with it. For example:
         if ``config_prefix`` is ``V1_`` then ``V1_API_TITLE`` is going to
         be used instead of ``API_TITLE``.

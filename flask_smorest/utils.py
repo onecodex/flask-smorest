@@ -151,7 +151,7 @@ def normalize_config_prefix(config_prefix: str):
     return result
 
 
-def get_config_key(ctx, key):
+def get_config_key(*, ctx, key):
     """Get flask config key potentially affected by config_prefix
 
     :param flask_smorest.Blueprint|flask_smorest.Api ctx: object
@@ -162,7 +162,7 @@ def get_config_key(ctx, key):
     return getattr(ctx, "config_prefix", "") + key
 
 
-def get_config_value(app, ctx, key, default=None):
+def get_config_value(*, app, ctx, key, default=None):
     """Get flask config key potentially affected by config_prefix
 
     :param flask_smorest.Blueprint|flask_smorest.Api ctx: object
@@ -171,4 +171,4 @@ def get_config_value(app, ctx, key, default=None):
     :param default: return this value if full key is not found.
     :return: a flask config value or ``default``.
     """
-    return app.config.get(get_config_key(ctx, key), default)
+    return app.config.get(get_config_key(ctx=ctx, key=key), default)
